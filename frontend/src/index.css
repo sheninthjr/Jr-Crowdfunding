@@ -6,6 +6,35 @@
 
 @layer base {
   * {
-    @apply bg-[#0F172A] text-white;
+    @apply text-white font-epilogue;
   }
+  body {
+    @apply bg-[#0F172A];
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0f172a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
+.bold-text {
+  font-family: "Epilogue", sans-serif;
+  font-weight: 700;
+}
+
+.text {
+  font-family: "Epilogue", sans-serif;
 }
