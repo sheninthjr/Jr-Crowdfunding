@@ -9,6 +9,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "@thirdweb-dev/react": "^4.9.4",
+    "@thirdweb-dev/sdk": "^4.0.99",
+    "ethers": "5.7.2",
     "framer-motion": "^12.0.0-alpha.0",
     "lucide-react": "^0.453.0",
     "react": "^18.3",
