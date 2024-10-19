@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { LayoutDashboard, SquareUser } from "lucide-react";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useStateContext } from "../context";
 import { Drawer } from "./Drawer";
 
@@ -8,11 +8,11 @@ export function Navbar() {
   const { connect, address } = useStateContext();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     if (address) {
       setIsDrawerOpen(true);
     } else {
-      connect();
+      await connect();
     }
   };
 

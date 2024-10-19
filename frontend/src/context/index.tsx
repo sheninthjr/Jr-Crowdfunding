@@ -16,7 +16,7 @@ interface FormData {
   image: string;
 }
 
-interface Campaign {
+export interface Campaign {
   owner: string;
   title: string;
   description: string;
@@ -33,6 +33,9 @@ interface StateContextType {
   connect: () => Promise<MetaMaskWallet>;
   createCampaign: (form: FormData) => Promise<void>;
   getCampaigns: () => Promise<Campaign[]>;
+  getUserCampaigns: () => Promise<Campaign[]>;
+  donate: (pId: number, amount: string) => Promise<void>;
+  getDonations: (pId: number) => Promise<any[]>;
 }
 
 const StateContext = createContext<StateContextType | undefined>(undefined);
@@ -100,6 +103,36 @@ export const StateContextProvider = ({
     }
   };
 
+  const getUserCampaigns = async () => {
+    const allCampaigns = await getCampaigns();
+    const userCampaign = allCampaigns.filter(
+      (c: Campaign) => c.owner == address
+    );
+    return userCampaign;
+  };
+
+  const donate = async (pId: number, amount: string) => {
+    const response = await contract?.call("donateToCampaign", [pId], {
+      value: ethers.utils.parseEther(amount),
+    });
+    return response;
+  };
+
+  const getDonations = async (pId: number) => {
+    const donations = await contract?.call("getDonators", [pId]);
+    const numberOfDonations = donations[0].length;
+
+    const parsedDonations = [];
+
+    for (let i = 0; i < numberOfDonations; i++) {
+      parsedDonations.push({
+        donator: donations[0][i],
+        donation: ethers.utils.formatEther(donations[1][i].toString()),
+      });
+    }
+
+    return parsedDonations;
+  };
   return (
     <StateContext.Provider
       value={{
@@ -108,6 +141,9 @@ export const StateContextProvider = ({
         connect,
         createCampaign: publishCampaign,
         getCampaigns,
+        getUserCampaigns,
+        donate,
+        getDonations,
       }}
     >
       {children}
