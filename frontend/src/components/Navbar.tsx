@@ -35,7 +35,7 @@ export function Navbar() {
         </a>
         <div className="flex space-x-2 justify-center items-center bg-transparent text-white">
           <a
-            href="/yourcampaign"
+            href="/profile"
             className="bg-transparent flex gap-2 self-center font-semibold"
           >
             <SquareUser />
