@@ -53,6 +53,7 @@ export function Dashboard() {
                 title={campaign.title}
                 description={campaign.description}
                 target={campaign.target}
+                avatar={campaign.avatar}
                 deadline={campaign.deadline}
                 amountCollected={campaign.amountCollected}
                 image={campaign.image}

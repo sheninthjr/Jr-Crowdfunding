@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { useStateContext } from "../context";
 import { calculateBarPercentage } from "../utils";
-import thirdweb from "../assets/thirdweb.png";
 import { Loader } from "./Loader";
 import CountBox from "./CountBox";
 
@@ -43,7 +42,7 @@ export function CampaignDetails() {
   };
 
   return (
-    <div className="h-screen pt-12">
+    <div className="h-screen pt-12 max-w-4xl">
       <div className="container mx-auto">
         {isLoading && <Loader />}
         <div className="w-full flex flex-col overflow-hidden p-2 gap-[30px] justify-center">
@@ -78,18 +77,18 @@ export function CampaignDetails() {
             <CountBox title="Total Donators" value={donators.length} />
           </div>
         </div>
-        <div className="mt-[60px] flex lg:flex-row flex-col gap-5 p-2 md:p-0 lg:p-0 xl:p-0">
+        <div className="mt-[60px] flex lg:flex-row flex-col gap-5 p-2 md:p-4 lg:p-0 xl:p-0">
           <div className="flex-[2] flex flex-col gap-[40px]">
             <div>
               <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">
                 Creator
               </h4>
               <div className="mt-[20px] flex flex-row items-center flex-wrap gap-[14px]">
-                <div className="w-[52px] h-[52px] flex items-center justify-center rounded-full bg-[#2c2f32] cursor-pointer">
+                <div className="w-[52px] h-[52px] flex items-center justify-center rounded-full cursor-pointer">
                   <img
-                    src={thirdweb}
+                    src={state.avatar}
                     alt="user"
-                    className="w-[60%] h-[60%] object-contain"
+                    className="w-[70%] h-[70%] object-contain rounded-full"
                   />
                 </div>
                 <div>
@@ -104,7 +103,7 @@ export function CampaignDetails() {
             </div>
             <div>
               <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">
-                Story
+                Description
               </h4>
               <div className="mt-[20px]">
                 <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] text-justify">
@@ -116,7 +115,7 @@ export function CampaignDetails() {
               <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">
                 Donators
               </h4>
-              <div className="mt-[20px] flex flex-col gap-4">
+              <div className="mt-[20px] flex flex-col gap-4 mb-4">
                 {donators.length > 0 ? (
                   donators.map((item, index) => (
                     <div

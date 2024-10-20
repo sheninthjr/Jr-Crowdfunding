@@ -1,10 +1,11 @@
-import thirdwebImage from "../assets/thirdweb.png";
+import { useStateContext } from "../context";
 
 interface CustomCardProps {
   owner: string;
   title: string;
   description: string;
   target: string;
+  avatar: string;
   deadline: string;
   amountCollected: string;
   image: string;
@@ -16,6 +17,7 @@ export function CustomCard({
   title,
   description,
   target,
+  avatar,
   deadline,
   amountCollected,
   image,
@@ -61,7 +63,7 @@ export function CustomCard({
         <div className="flex items-center mt-[20px] gap-[12px]">
           <div className="w-[30px] h-[30px] rounded-full flex justify-center items-center bg-[#13131a]">
             <img
-              src={thirdwebImage}
+              src={avatar}
               alt="user"
               className="object-contain rounded-full"
             />

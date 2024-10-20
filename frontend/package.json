@@ -9,6 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "@metamask/jazzicon": "^2.0.0",
     "@thirdweb-dev/react": "^4.9.4",
     "@thirdweb-dev/sdk": "^4.0.99",
     "buffer": "^6.0.3",

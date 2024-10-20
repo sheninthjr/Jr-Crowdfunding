@@ -1,5 +1,3 @@
-
-
 export function Loader() {
   return (
     <div className="fixed inset-0 z-10 h-screen bg-[rgba(0,0,0,0.7)] flex items-center justify-center flex-col">
@@ -11,7 +9,7 @@ export function Loader() {
         <circle
           fill="#FFFFFF"
           stroke="#FFFFFF"
-          stroke-width="15"
+          strokeWidth="15"
           r="15"
           cx="40"
           cy="65"
@@ -29,7 +27,7 @@ export function Loader() {
         <circle
           fill="#FFFFFF"
           stroke="#FFFFFF"
-          stroke-width="15"
+          strokeWidth="15"
           r="15"
           cx="100"
           cy="65"
@@ -47,7 +45,7 @@ export function Loader() {
         <circle
           fill="#FFFFFF"
           stroke="#FFFFFF"
-          stroke-width="15"
+          strokeWidth="15"
           r="15"
           cx="160"
           cy="65"

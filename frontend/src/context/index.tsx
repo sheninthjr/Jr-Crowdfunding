@@ -7,7 +7,7 @@ import {
   MetaMaskWallet,
 } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
-import { daysLeft } from "../utils";
+import { daysLeft, generateAvatarUrl } from "../utils";
 import { Campaigns } from "../types";
 
 interface FormData {
@@ -26,6 +26,7 @@ export interface Campaign {
   deadline: {
     _hex: string;
   };
+  avatar: string;
   amountCollected: string;
   image: string;
   pId: number;
@@ -50,7 +51,7 @@ export const StateContextProvider = ({
   children: React.ReactNode;
 }) => {
   const { contract } = useContract(
-    "0x652809672fBcaEDD78aa0b308C0e3e6cD72D8293"
+    "0x4Ac84234C1515B00Ef1850Ce60262e677599816e"
   );
   const { mutateAsync: createCampaign } = useContractWrite(
     contract,
@@ -61,13 +62,19 @@ export const StateContextProvider = ({
   const connect = useMetamask();
 
   const publishCampaign = async (form: FormData) => {
+    if (!address) {
+      console.error("Address is undefined. Please connect your wallet.");
+      return;
+    }
     try {
+      const avatar = generateAvatarUrl(address, 48);
       const data = await createCampaign({
         args: [
           address,
           form.title,
           form.description,
           form.target,
+          avatar,
           new Date(form.deadline).getTime(),
           form.image,
         ],
@@ -91,6 +98,7 @@ export const StateContextProvider = ({
           title: campaign.title,
           description: campaign.description,
           target: ethers.utils.formatEther(campaign.target.toString()),
+          avatar: campaign.avatar,
           deadline: daysLeft(parseInt(campaign.deadline._hex, 16)),
           amountCollected: ethers.utils.formatEther(
             campaign.amountCollected.toString()

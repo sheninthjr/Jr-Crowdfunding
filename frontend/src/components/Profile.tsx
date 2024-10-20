@@ -53,6 +53,7 @@ export function Profile() {
               description={campaign.description}
               target={campaign.target}
               deadline={campaign.deadline}
+              avatar={campaign.avatar}
               amountCollected={campaign.amountCollected}
               image={campaign.image}
               handleClick={() => handleCampaign(campaign)}

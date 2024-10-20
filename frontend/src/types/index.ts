@@ -3,6 +3,7 @@ export interface Campaigns {
   title: string;
   description: string;
   target: string;
+  avatar: string;
   deadline: string;
   amountCollected: string;
   image: string;
