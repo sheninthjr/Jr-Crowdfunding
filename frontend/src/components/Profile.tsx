@@ -12,11 +12,6 @@ export function Profile() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const fetchUserCampaign = async () => {
-    const response = await getUserCampaigns();
-    setCampaigns(response);
-  };
-
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (index: number) => ({
@@ -32,9 +27,18 @@ export function Profile() {
 
   useEffect(() => {
     if (contract && address) {
-      setIsLoading(true);
+      const fetchUserCampaign = async () => {
+        setIsLoading(true);
+        try {
+          const response = await getUserCampaigns();
+          setCampaigns(response);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
       fetchUserCampaign();
-      setIsLoading(false);
     }
   }, [address, contract]);
 

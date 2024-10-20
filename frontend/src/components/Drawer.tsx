@@ -62,7 +62,7 @@ export function Drawer({ closeDrawer }: { closeDrawer: () => void }) {
               >
                 ✕
               </button>
-              <h2 className="text-3xl font-bold mb-8 text-white">
+              <h2 className="text-lg md:text-3xl font-bold mb-8 text-white">
                 Create New Campaign
               </h2>
               <form
