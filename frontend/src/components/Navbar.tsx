@@ -21,14 +21,14 @@ export function Navbar() {
       <motion.div
         animate={{ y: 40 }}
         transition={{ type: "spring", stiffness: 30, damping: 20 }}
-        className="fixed top-1 self-center flex justify-between items-center border border-white/20 backdrop-blur-md px-8 py-4 max-w-4xl mx-auto w-full rounded-3xl shadow-secondary"
+        className="fixed top-1 self-center flex justify-between items-center border border-white/20 backdrop-blur-md px-4 py-4 max-w-4xl mx-auto w-full rounded-3xl shadow-secondary"
         style={{
           background: "rgba(255, 255, 255, 0.1)",
         }}
       >
         <a
           href="/"
-          className="bg-gradient-to-tr from-[#8A2BE2] to-[#FF6F91] bg-clip-text text-transparent font-epilogue font-bold text-2xl"
+          className="bg-gradient-to-tr from-[#FF42F2] to-[#FF6F21] bg-clip-text text-transparent font-epilogue font-bold text-lg md:text-2xl lg:text-2xl"
         >
           Jr CrowdFunding
         </a>
@@ -38,17 +38,21 @@ export function Navbar() {
             className="bg-transparent flex gap-2 self-center font-semibold"
           >
             <SquareUser />
-            <span className="bg-transparent text-lg">Profile</span>
+            <span className="hidden md:block bg-transparent text-lg">
+              Profile
+            </span>
           </a>
           <a
             href="/"
             className="bg-transparent flex gap-2 self-center font-semibold"
           >
             <LayoutDashboard />
-            <span className="bg-transparent text-lg">Dashboard</span>
+            <span className="bg-transparent hidden md:block  text-lg">
+              Dashboard
+            </span>
           </a>
           <button
-            className="bg-[#0DA5E9] pt-1 pb-1 font-semibold rounded-xl text-white px-3"
+            className="bg-[#3FBDD0] pt-1 pb-1 font-semibold rounded-xl text-white px-3"
             onClick={handleButtonClick}
           >
             {address ? "Create" : "Connect"}

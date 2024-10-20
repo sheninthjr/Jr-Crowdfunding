@@ -7,6 +7,8 @@ import {
   MetaMaskWallet,
 } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
+import { daysLeft } from "../utils";
+import { Campaigns } from "../types";
 
 interface FormData {
   title: string;
@@ -21,7 +23,9 @@ export interface Campaign {
   title: string;
   description: string;
   target: string;
-  deadline: number;
+  deadline: {
+    _hex: string;
+  };
   amountCollected: string;
   image: string;
   pId: number;
@@ -32,8 +36,8 @@ interface StateContextType {
   contract: any;
   connect: () => Promise<MetaMaskWallet>;
   createCampaign: (form: FormData) => Promise<void>;
-  getCampaigns: () => Promise<Campaign[]>;
-  getUserCampaigns: () => Promise<Campaign[]>;
+  getCampaigns: () => Promise<Campaigns[]>;
+  getUserCampaigns: () => Promise<Campaigns[]>;
   donate: (pId: number, amount: string) => Promise<void>;
   getDonations: (pId: number) => Promise<any[]>;
 }
@@ -87,7 +91,7 @@ export const StateContextProvider = ({
           title: campaign.title,
           description: campaign.description,
           target: ethers.utils.formatEther(campaign.target.toString()),
-          deadline: campaign.deadline,
+          deadline: daysLeft(parseInt(campaign.deadline._hex, 16)),
           amountCollected: ethers.utils.formatEther(
             campaign.amountCollected.toString()
           ),
