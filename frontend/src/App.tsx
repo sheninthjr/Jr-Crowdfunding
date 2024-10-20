@@ -1,8 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { Navbar, Dashboard } from "./components";
+import { Navbar, Dashboard, Profile, CampaignDetails } from "./components";
 import "./index.css";
-import { CampaignDetails } from "./components/CampaignDetails";
-import { Profile } from "./components/Profile";
 
 export function App() {
   return (

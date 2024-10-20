@@ -8,7 +8,7 @@ import { CardLoading } from "./CardLoading";
 
 export function Profile() {
   const [campaigns, setCampaigns] = useState<Campaigns[]>([]);
-  const { getUserCampaigns } = useStateContext();
+  const { address, contract, getUserCampaigns } = useStateContext();
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -26,19 +26,21 @@ export function Profile() {
   };
 
   useEffect(() => {
-    const fetchUserCampaign = async () => {
-      setIsLoading(true);
-      try {
-        const response = await getUserCampaigns();
-        setCampaigns(response);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchUserCampaign();
-  }, []);
+    if (contract && address) {
+      const fetchUserCampaign = async () => {
+        setIsLoading(true);
+        try {
+          const response = await getUserCampaigns();
+          setCampaigns(response);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      fetchUserCampaign();
+    }
+  }, [address, contract]);
 
   return (
     <>
