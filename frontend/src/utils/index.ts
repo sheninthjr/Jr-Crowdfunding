@@ -1,3 +1,4 @@
+// @ts-ignore
 import jazzicon from "@metamask/jazzicon";
 
 export const daysLeft = (deadline: any) => {
