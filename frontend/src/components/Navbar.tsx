@@ -21,7 +21,7 @@ export function Navbar() {
       <motion.div
         animate={{ y: 40 }}
         transition={{ type: "spring", stiffness: 30, damping: 20 }}
-        className="fixed top-1 self-center flex justify-between items-center border border-white/20 backdrop-blur-md px-4 py-4 max-w-4xl mx-auto w-full rounded-3xl shadow-secondary"
+        className="fixed top-1 self-center flex justify-between items-center border border-white/20 backdrop-blur-md px-4 py-4 max-w-4xl mx-auto w-[95%] rounded-3xl shadow-secondary"
         style={{
           background: "rgba(255, 255, 255, 0.1)",
         }}
