@@ -2,9 +2,8 @@ import React, { useContext, createContext } from "react";
 import {
   useAddress,
   useContract,
-  useMetamask,
   useContractWrite,
-  MetaMaskWallet,
+  useConnect,
 } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
 import { daysLeft, generateAvatarUrl } from "../utils";
@@ -35,7 +34,7 @@ export interface Campaign {
 interface StateContextType {
   address: string | undefined;
   contract: any;
-  connect: () => Promise<MetaMaskWallet>;
+  connect: () => Promise<any>;
   createCampaign: (form: FormData) => Promise<void>;
   getCampaigns: () => Promise<Campaigns[]>;
   getUserCampaigns: () => Promise<Campaigns[]>;
@@ -59,7 +58,7 @@ export const StateContextProvider = ({
   );
 
   const address = useAddress();
-  const connect = useMetamask();
+  const connect = useConnect();
 
   const publishCampaign = async (form: FormData) => {
     if (!address) {

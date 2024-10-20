@@ -3,6 +3,7 @@ import { LayoutDashboard, SquareUser } from "lucide-react";
 import { useState } from "react";
 import { useStateContext } from "../context";
 import { Drawer } from "./Drawer";
+import { ConnectButton } from "./ConnectButton";
 
 export function Navbar() {
   const { connect, address } = useStateContext();
@@ -19,7 +20,7 @@ export function Navbar() {
   return (
     <>
       <motion.div
-        animate={{ y: 40 }}
+        animate={{ y: 30 }}
         transition={{ type: "spring", stiffness: 30, damping: 20 }}
         className="fixed top-1 self-center flex justify-between items-center border border-white/20 backdrop-blur-md px-4 py-4 max-w-4xl mx-auto w-[95%] rounded-3xl shadow-secondary"
         style={{
@@ -32,7 +33,7 @@ export function Navbar() {
         >
           Jr CrowdFunding
         </a>
-        <div className="flex space-x-4 justify-center items-center bg-transparent text-white">
+        <div className="flex space-x-2 justify-center items-center bg-transparent text-white">
           <a
             href="/profile"
             className="bg-transparent flex gap-2 self-center font-semibold"
@@ -51,12 +52,16 @@ export function Navbar() {
               Dashboard
             </span>
           </a>
-          <button
-            className="bg-[#3FBDD0] pt-1 pb-1 font-semibold rounded-xl text-white px-3"
-            onClick={handleButtonClick}
-          >
-            {address ? "Create" : "Connect"}
-          </button>
+          {address ? (
+            <button
+              className="bg-[#3FBDD0] pt-1 pb-1 font-semibold rounded-xl text-white px-3"
+              onClick={handleButtonClick}
+            >
+              Create
+            </button>
+          ) : (
+            <ConnectButton color="#3FBDD0" />
+          )}
         </div>
       </motion.div>
       {isDrawerOpen && <Drawer closeDrawer={() => setIsDrawerOpen(false)} />}

@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { useStateContext } from "../context";
 import { calculateBarPercentage } from "../utils";
 import { Loader } from "./Loader";
 import CountBox from "./CountBox";
+import { ConnectButton } from "./ConnectButton";
 
 export function CampaignDetails() {
   const { state } = useLocation();
@@ -157,10 +158,14 @@ export function CampaignDetails() {
                 />
                 <button
                   title="Fund Campaign"
-                  className="w-full bg-[#8c6dfd] p-4 rounded-lg"
+                  className="w-full bg-[#8c6dfd] p-2 rounded-lg"
                   onClick={handleDonate}
                 >
-                  {address ? "Fund Campaign" : "Connect"}
+                  {address ? (
+                    "Fund Campaign"
+                  ) : (
+                    <ConnectButton color="#8c6dfd" />
+                  )}
                 </button>
               </div>
             </div>
