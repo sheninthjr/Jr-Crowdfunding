@@ -32,7 +32,7 @@ export function Dashboard() {
   }, [getCampaigns]);
 
   return (
-    <div className="flex flex-col space-y-6 pt-14 h-screen p-2 md:p-16 lg:p-16">
+    <div className="flex flex-col space-y-6 justify-center pt-14 h-screen p-2 md:p-16 lg:p-16">
       <p className="font-semibold text-3xl bold-text flex self-center">
         All Campaigns
       </p>
