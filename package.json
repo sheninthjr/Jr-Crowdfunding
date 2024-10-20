@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@metamask/jazzicon": "^2.0.0",
-    "react-metamask-avatar": "^2.0.10"
-  }
-}
