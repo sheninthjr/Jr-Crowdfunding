@@ -29,9 +29,21 @@ export function Profile() {
   };
 
   useEffect(() => {
-    if (contract) fetchUserCampaign();
+    if (contract && address) fetchUserCampaign();
   }, [address, contract]);
 
+  if (campaigns.length === 0) {
+    return (
+      <div className="flex flex-col space-y-6">
+        <p className="font-semibold text-3xl bold-text flex self-center">
+          Your Campaigns
+        </p>
+        <div className="text-xl flex h-[70%] font-epilogue justify-center items-center">
+          Create your first Campaign
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col space-y-6">
       <p className="font-semibold text-3xl bold-text flex self-center">
