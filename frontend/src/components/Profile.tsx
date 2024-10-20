@@ -8,7 +8,7 @@ import { CardLoading } from "./CardLoading";
 
 export function Profile() {
   const [campaigns, setCampaigns] = useState<Campaigns[]>([]);
-  const { address, contract, getUserCampaigns } = useStateContext();
+  const { getUserCampaigns } = useStateContext();
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -26,21 +26,19 @@ export function Profile() {
   };
 
   useEffect(() => {
-    if (contract && address) {
-      const fetchUserCampaign = async () => {
-        setIsLoading(true);
-        try {
-          const response = await getUserCampaigns();
-          setCampaigns(response);
-        } catch (error) {
-          console.error(error);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-      fetchUserCampaign();
-    }
-  }, [address, contract]);
+    const fetchUserCampaign = async () => {
+      setIsLoading(true);
+      try {
+        const response = await getUserCampaigns();
+        setCampaigns(response);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchUserCampaign();
+  }, []);
 
   return (
     <>
@@ -77,7 +75,7 @@ export function Profile() {
                 </motion.div>
               ))}
           </div>
-          {!isLoading && campaigns.length === 0 && (
+          {!isLoading && (
             <div className="text-xl flex pt-[70%] font-epilogue justify-center  items-center">
               Create your first Campaign
             </div>

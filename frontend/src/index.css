@@ -38,3 +38,8 @@
 .text {
   font-family: "Epilogue", sans-serif;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.8);
+}

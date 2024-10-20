@@ -98,7 +98,7 @@ export function Drawer({ closeDrawer }: { closeDrawer: () => void }) {
                   onChange={(e) =>
                     setForm({ ...form, deadline: e.target.value })
                   }
-                  className="border border-transparent outline-none transition-all duration-300 p-3 rounded-xl bg-white/20 backdrop-blur-lg shadow-inner text-white placeholder-gray-300 font-semibold text-lg"
+                  className="border border-transparent outline-none transition-all duration-300 p-3 rounded-xl bg-white/20 backdrop-blur-lg shadow-inner text-white w-full placeholder-gray-300 font-semibold text-lg"
                 />
                 <input
                   type="text"
