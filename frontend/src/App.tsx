@@ -9,8 +9,8 @@ export function App() {
       <div className="flex-grow flex mx-auto mt-[140px]">
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/campaign-details/:id" element={<CampaignDetails />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/campaign-details/:id" element={<CampaignDetails />} />
         </Routes>
       </div>
     </div>
