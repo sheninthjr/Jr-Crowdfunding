@@ -53,7 +53,7 @@ export function CampaignDetails() {
               alt="campaign"
               className="w-full h-[410px] object-cover rounded-xl"
             />
-            <div className="relative w-full h-[5px] bg-[#3a3a43] mt-2">
+            <div className="relative w-full h-[5px] bg-blue-400 mt-2">
               <div
                 className="absolute h-full bg-[#4acd8d]"
                 style={{
