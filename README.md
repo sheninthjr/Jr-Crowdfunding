@@ -1,1 +1,1 @@
-# Jr CrowdFunding DApp
+# CrowdFunding DApp
